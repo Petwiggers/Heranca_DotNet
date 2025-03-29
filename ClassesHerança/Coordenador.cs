@@ -9,4 +9,9 @@ public class Coordenador : Funcionario
     {
         SenhaAlarme = senha_alarme;
     }
+
+    public Coordenador(Funcionario funcionario, string senha_alarme) : base(funcionario.Nome, funcionario.Cpf, funcionario.Rg, funcionario.Logradouro, funcionario.Matricula, funcionario.Salario)
+    {
+        SenhaAlarme = senha_alarme;
+    }
 }

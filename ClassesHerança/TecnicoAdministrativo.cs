@@ -7,4 +7,9 @@ public class TecnicoAdministrativo : Funcionario
     {
         Funcao = funcao;
     }
+
+    public TecnicoAdministrativo(Funcionario funcionario, string funcao) : base(funcionario.Nome, funcionario.Cpf, funcionario.Rg, funcionario.Logradouro, funcionario.Matricula, funcionario.Salario)
+    {
+        Funcao = funcao;
+    }
 }
