@@ -1,5 +1,4 @@
-﻿// chama a classe Curso, Aluno, Professor e Endereco do namespace ClassesHerança
-// somente é possivel pois o projeto AplicaçãoHerança tem uma referência para o projeto ClassesHerança
+﻿
 using ClassesHerança;
 using System;
 using System.Reflection;
@@ -89,7 +88,6 @@ internal class Program
                     Console.WriteLine($"{propriedade.Name}: {valor}");
                 }
             }
-
             Console.WriteLine("-----------------------------");
         }
     }

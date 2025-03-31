@@ -1,4 +1,5 @@
 ﻿namespace ClassesHerança;
+//Peterson Wiggers
 public class Endereco
 {
     public string Rua { get; set; }

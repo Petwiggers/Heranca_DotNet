@@ -1,4 +1,5 @@
 namespace ClassesHerança;
+//Peterson Wiggers
 public class Curso : Object 
 {
     public string Nome { get; set; }
