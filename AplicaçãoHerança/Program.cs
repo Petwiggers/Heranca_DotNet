@@ -3,6 +3,7 @@
 using ClassesHerança;
 using System;
 using System.Reflection;
+//Peterson Wiggers
 internal class Program
 {
     Program()
@@ -73,25 +74,24 @@ internal class Program
             Type tipo = item.GetType();
 
             Console.WriteLine($"Listagem de {tipo}\n");
-            // Lista todas as propriedades e seus valores
             foreach (PropertyInfo propriedade in tipo.GetProperties())
             {
-                if (propriedade.Name == "Endereco")
+                if (propriedade.Name == "Logradouro")
                 {
+                    Console.WriteLine("Logradouro:");
                     foreach (PropertyInfo x in typeof(Endereco).GetProperties())
                     {
-                        object valorEndereco = x.GetValue(item);
-                        Console.WriteLine($"{propriedade.Name}: {valorEndereco}");
+                        object valorEndereco = x.GetValue(item.Logradouro) ?? "Null";
+                        Console.WriteLine($"    {x.Name}: {valorEndereco}");
                     }
+                }else{
+                    object valor = propriedade.GetValue(item) ?? "Null";
+                    Console.WriteLine($"{propriedade.Name}: {valor}");
                 }
-                object valor = propriedade.GetValue(item);
-                Console.WriteLine($"{propriedade.Name}: {valor}");
             }
 
             Console.WriteLine("-----------------------------");
         }
-
-
     }
     private static void Main(string[] args)
     {
