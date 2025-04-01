@@ -1,20 +1,47 @@
 namespace ClassesHerança;
-//Peterson Wiggers
-public class Professor : Funcionario 
+
+public class Professor : Funcionario // herança, Professor é uma subclasse de Funcionario que é uma subclasse de Pessoa que é uma subclasse de Object
 {
     public string Titulacao { get; set; }
     public string Area { get; set; }
-    public Professor(string nome = "", string cpf = "", string rg = "", Endereco? logradouro = null, string matricula = "", decimal salario = 0, 
-    string titulacao = "", string area = "") 
-    : base(nome, cpf, rg, logradouro, matricula, salario)
+
+    // construtor com parâmetros opcionais e uso de construtor da classe base
+    public Professor(
+        string nome = "",
+        string cpf = "",
+        string rg = "",
+        Endereco? logradouro = null,
+        decimal salario = 0,
+        string matricula = "",
+        string titulacao = "",
+        string area = ""
+    ) : base(nome, cpf, rg, logradouro, salario, matricula)
     {
+        // os atributos da classe base são herdados e inicializados pelo construtor da classe base
+        // atributos específicos da classe derivada
         Titulacao = titulacao;
         Area = area;
     }
 
-    public Professor(Funcionario funcionario, string titulacao, string area) : base(funcionario.Nome, funcionario.Cpf, funcionario.Rg, funcionario.Logradouro, funcionario.Matricula, funcionario.Salario)
+    // implementa membro abstrato herdado "Pessoa.RetornarDados()
+    public override List<(string campo, string valor)> RetornarDados()
     {
-        Titulacao = titulacao;
-        Area = area;
+        // cria uma lista de tuplas com os dados do aluno, utilizando variavel temporaria embutida para criar a lista de tuplas
+        return new List<(string campo, string valor)>
+        {
+            ("Nome", Nome),
+            ("Cpf", Cpf),
+            ("Rg", Rg),
+            ("Rua", Logradouro.Rua),
+            ("Numero", Logradouro.Numero.ToString()),
+            ("Bairro", Logradouro.Bairro),
+            ("Cidade", Logradouro.Cidade),
+            ("Estado", Logradouro.Estado),
+            ("Cep", Logradouro.Cep.ToString()),
+            ("Salário", Salario.ToString()),
+            ("Matricula", Matricula.ToString()),
+            ("Titulacao", Titulacao),
+            ("Area", Area)
+        };
     }
 }
