@@ -44,4 +44,9 @@ public class Professor : Funcionario // herança, Professor é uma subclasse de 
             ("Area", Area)
         };
     }
+
+    public override string ToString()
+    {
+        return $"{Nome},{Titulacao},{Matricula}";
+    }
 }

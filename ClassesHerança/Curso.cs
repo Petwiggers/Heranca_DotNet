@@ -13,4 +13,8 @@ public class Curso : Object
         Descricao = descricao;
         CargaHoraria = cargaHoraria;
     }
+    public override string ToString()
+    {
+        return $"{Nome},{CargaHoraria}";
+    }
 }

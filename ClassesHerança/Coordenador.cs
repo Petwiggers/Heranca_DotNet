@@ -11,8 +11,8 @@ public class Coordenador : Funcionario // herança, Coordenador é uma subclasse
         string rg = "",
         Endereco? logradouro = null,
         decimal salario = 0,
-        string matricula = "",
-        string senha = ""
+        string matricula = "51511202",
+        string senha = "AbcBolinhas"
     ) : base(nome, cpf, rg, logradouro, salario, matricula)
     {
         // os atributos da classe base são herdados e inicializados pelo construtor da classe base
@@ -40,5 +40,10 @@ public class Coordenador : Funcionario // herança, Coordenador é uma subclasse
             ("Matricula", Matricula.ToString()),
             ("Senha", SenhaAlarme)
         };
+    }
+
+    public override string ToString()
+    {
+        return $"{Nome},{Matricula}";
     }
 }

@@ -17,4 +17,9 @@ public class Endereco
         Estado = estado;
         Cep = cep;
     }
+
+    public override string ToString()
+    {
+        return $"{Rua}, {Numero}, {Cidade}";
+    }
 }

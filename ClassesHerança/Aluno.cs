@@ -20,6 +20,16 @@ public class Aluno : Pessoa // herança, Aluno é uma subclasse de Pessoa que é
         CursoAluno = cursoAluno ?? new Curso();
     }
 
+    public Aluno(Curso curso)
+    {
+        Nome = "Peterson Wiggers";
+        Cpf = "12345678900";
+        Rg = "MG1234567";
+        Logradouro = new Endereco { Rua = "Rua das Flores", Cidade = "São Paulo" };
+        Matricula = 20231001;
+        CursoAluno = curso;
+    }
+
     // implementa membro abstrato herdado "Pessoa.RetornarDados()
     public override List<(string campo, string valor)> RetornarDados()
     {
@@ -41,5 +51,10 @@ public class Aluno : Pessoa // herança, Aluno é uma subclasse de Pessoa que é
             ("Descrição do Curso", CursoAluno.Descricao),
             ("Carga Horária", CursoAluno.CargaHoraria.ToString())
         };
+    }
+
+    public override string ToString()
+    {
+        return $"{Nome},{Matricula},{CursoAluno.Nome}";
     }
 }

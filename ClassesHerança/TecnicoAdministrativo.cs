@@ -41,4 +41,9 @@ public class TecnicoAdministrativo : Funcionario // herança, TecnicoAdmistrativ
             ("Função", Funcao)
         };
     }
+
+    public override string ToString()
+    {
+        return $"{Nome},{Funcao}";
+    }
 }
