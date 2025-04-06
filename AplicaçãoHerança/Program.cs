@@ -8,9 +8,13 @@ internal class Program
     Program()
     {
         List<Pessoa> pessoas = new();
+
         Endereco logradouro = new Endereco { Rua = "Rua das Flores", Cidade = "São Paulo" };
+
         Curso curso = new Curso("Sistemas de Informação", "O melhor curso", 200);
-        Aluno aluno1 = new();
+
+        Aluno aluno1 = new(curso);
+
         Aluno aluno2 = new Aluno(
             nome: "João Silva",
             cpf: "12345678900",
@@ -37,6 +41,24 @@ internal class Program
         pessoas.Add(aluno2);
         pessoas.Add(aluno3);
 
+        Professor professor1 = new Professor(
+            nome: "Peterson Wiggers",
+            cpf: "123.456.789-00",
+            rg: "12.345.678-9",
+            logradouro: new Endereco(
+                "Rua das Flores",
+                123,
+                "Centro",
+                "São Paulo",
+                "SP",
+                "01234-567"
+            ),
+            matricula: "PROF2025001",
+            salario: 7500.00m,
+            titulacao: "Mestre",
+            area: "Tecnologia"
+        );
+
         Professor professor2 = new Professor(
             nome: "João Silva",
             cpf: "123.456.789-00",
@@ -54,11 +76,28 @@ internal class Program
             titulacao: "Doutorado",
             area: "Ciência da Computação"
         );
-
+        pessoas.Add(professor1);
         pessoas.Add(professor2);
 
         Coordenador coordenador = new("Peterson Wiggers", "012213", "012213", logradouro);
         pessoas.Add(coordenador);
+
+        TecnicoAdministrativo tecnico1 = new TecnicoAdministrativo(
+            nome: "Peterson Wiggers",
+            cpf: "987.654.321-00",
+            rg: "98.765.432-1",
+            logradouro: new Endereco(
+                "Avenida Central",
+                456,
+                "Centro",
+                "Rio de Janeiro",
+                "RJ",
+                "12345-678"
+            ),
+            matricula: "TA2025002",
+            salario: 4500.00m,
+            funcao: "Desenvolvedor"
+        );
 
         TecnicoAdministrativo tecnico2 = new TecnicoAdministrativo(
             nome: "Maria Oliveira",
@@ -76,15 +115,20 @@ internal class Program
             salario: 4500.00m,
             funcao: "Assistente Administrativo"
         );
+        pessoas.Add(tecnico1);
         pessoas.Add(tecnico2);
 
         //listar todo o conteúdo do list mostrando todos os dados de cada classe
         foreach (var item in pessoas)
         {
             Console.Write($"{item.GetType().Name} => ");
+            Console.WriteLine(item.ToString());
             foreach (var (campo, valor) in item.RetornarDados())
             {
-                Console.Write($"{campo}: {valor}, ");
+                if (valor != null)
+                {
+                    Console.WriteLine($"{campo}: {valor}, ");
+                }
             }
             Console.WriteLine("");
         }
